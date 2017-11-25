@@ -1,0 +1,13 @@
+{
+    "name": "pangolinkeys/php-binders",
+    "description": "A repository to simplifiy combining arrays.",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "James Cook",
+            "email": "me@jamesaidancook.com"
+        }
+    ],
+    "require": {}
+}
