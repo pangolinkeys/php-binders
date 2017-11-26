@@ -9,21 +9,34 @@ class Preference
     use Bindable;
 
     /**
-     * Method which returns an array of strings containing all the keys available on a bindable object.
+     * Data structure for the example.
      *
-     * @return String[]
+     * @var array
      */
-    public function getKeys()
-    {
-        return ['Dave', 'Andy'];
-    }
-
     protected $data = [
         'Dave' => 30,
         'Andy' => 55,
     ];
 
-    public function getAge($person)
+    /**
+     * Array of strings containing all the keys available on a bindable object.
+     *
+     * @return String[]
+     */
+    public function getKeys()
+    {
+        return array_keys($this->data);
+    }
+
+    /**
+     * Method which returns the age point in the array.
+     *
+     * Note the inclusion of & in the method declaration.
+     *
+     * @param $person
+     * @return mixed
+     */
+    public function &getAge($person)
     {
         return $this->data[ $person ];
     }
