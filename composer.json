@@ -1,13 +1,27 @@
 {
-    "name": "pangolinkeys/php-binders",
-    "description": "A repository to simplifiy combining arrays.",
-    "type": "library",
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "James Cook",
-            "email": "me@jamesaidancook.com"
-        }
-    ],
-    "require": {}
+  "name": "pangolinkeys/php-binders",
+  "description": "A repository to simplifiy combining arrays.",
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "James Cook",
+      "email": "me@jamesaidancook.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "PangolinKeys\\Binders\\": "src/",
+      "PangolinKeys\\Binders\\Tests\\": "tests/",
+      "PangolinKeys\\Binders\\Example\\": "example/"
+    }
+  },
+  "require": {
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^6.4",
+    "orchestra/testbench": "^3.5"
+  },
+  "scripts": {
+  }
 }
