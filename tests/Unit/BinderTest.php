@@ -4,7 +4,7 @@
 use PangolinKeys\Binders\Example\Person;
 use PangolinKeys\Binders\Example\Preference;
 
-class BinderTests extends \PHPUnit\Framework\TestCase
+class BinderTest extends \Orchestra\Testbench\TestCase
 {
 
     protected $person;
