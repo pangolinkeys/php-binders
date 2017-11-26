@@ -11,12 +11,28 @@ class BinderTest extends \Orchestra\Testbench\TestCase
 
     protected $preferences;
 
+    /**
+     * Example of string name present in both example data structures.
+     *
+     * @var
+     */
+    protected $name;
+
+    /**
+     * Example of string key present in both example data structures.
+     *
+     * @var
+     */
+    protected $key;
+
     public function setUp()
     {
         parent::setUp();
 
         $this->person = new Person();
         $this->preferences = new Preference();
+        $this->name = 'Dave';
+        $this->key = 'Age';
 
     }
 
@@ -27,7 +43,7 @@ class BinderTest extends \Orchestra\Testbench\TestCase
 
     public function testKeysCorrect()
     {
-        $this->assertEquals($this->person->getKeys()[0], 'Dave');
+        $this->assertEquals($this->person->getKeys()[0], $this->name);
     }
 
     public function testGetKeysOnBoth()
@@ -37,23 +53,24 @@ class BinderTest extends \Orchestra\Testbench\TestCase
 
     public function testPersonCanBind()
     {
-        $this->person->bind($this->preferences, 'Age');
-
-        $this->assertNotEquals($this->person->getAge('Dave'), 1);
+        $this->person->bind($this->preferences, $this->key);
+        $this->assertNotEquals($this->person->getAge($this->name), 1);
     }
 
     public function testValuesDifferentBeforeBind()
     {
-        $person = 'Dave';
-
-        $this->assertNotEquals($this->person->getAge($person), $this->preferences->getAge($person));
+        $this->assertNotEquals($this->person->getAge($this->name), $this->preferences->getAge($this->name));
     }
 
     public function testOutcomeOfBindCorrect()
     {
-        $this->person->bind($this->preferences, 'Age');
+        $this->person->bind($this->preferences, $this->key);
+        $this->assertEquals($this->person->getAge($this->name), $this->preferences->getAge($this->name));
+    }
 
-        $person = 'Dave';
-        $this->assertEquals($this->person->getAge($person), $this->preferences->getAge($person));
+    public function testBindsCanBePerformedInTwoDirections()
+    {
+        $this->preferences->bind($this->person, $this->key);
+        $this->assertEquals($this->preferences->getAge($this->name), $this->person->getAge($this->name));
     }
 }
